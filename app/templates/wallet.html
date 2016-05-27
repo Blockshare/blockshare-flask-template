@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+
+{% if current_user.is_authenticated %}
+<div class="ui center aligned text container">
+  <h1 class="ui header">{{ title }}</h1>
+</div>
+<div class="ui vertical quote segment">
+  <div class="ui equal width stackable internally celled grid">
+    <div class="ui left aligned row">
+      <div class="column">
+	<h2 class="ui header">Wallet</h2>
+	<h4 class="ui header">{{ message }}</h4>	
+	<h4 class="ui header">Your balance is now: {{ balance }} Satoshis</h4>
+	<h4 class="ui header">Your address is now: {{ address }}</h4>
+	<form id="generateAddress" action="/marketplace" method="get">
+	  <button class="ui primary button" type="submit" form="generateAddress">Generate Address</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div> 
+
+
+
+
+{% endif %}    
+
+{% endblock %}
